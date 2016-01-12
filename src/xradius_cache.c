@@ -194,7 +194,7 @@ int xrad_cache_dbm_check(request_rec* r, xrad_serverconf_rec *sc,
     apr_dbm_close(dbm);
     
     if (dbmval.dsize < (sizeof(apr_time_t)+sizeof(char)) || dbmval.dptr == NULL) {
-        ap_log_error(APLOG_MARK, APLOG_NOTICE, rv,
+        ap_log_error(APLOG_MARK, APLOG_DEBUG, rv,
                      r->server,
                      "xradius: val size: '%d'",
                      dbmval.dsize);        
@@ -204,7 +204,7 @@ int xrad_cache_dbm_check(request_rec* r, xrad_serverconf_rec *sc,
     status = dbmval.dptr+sizeof(apr_time_t);
     epass = dbmval.dptr+sizeof(apr_time_t)+sizeof(char);
     
-    ap_log_error(APLOG_MARK, APLOG_NOTICE, rv,
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, rv,
                  r->server,
                  "xradius: fetched '%s':'%s'",
                  password, epass);
